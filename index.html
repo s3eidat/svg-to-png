@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; media-src 'self' data: blob:; connect-src 'self' data: blob:; worker-src 'self' blob:; manifest-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<title>SVG to PNG — Free SVG Converter at Any Size (1x–8x) | S3eidat Tools</title>
+<meta name="description" content="Render SVG files or pasted SVG code to sharp PNG at any width, height or scale (1x–8x), transparent or with a background color. Batch zip. Scripts in the SVG never run. Free and private.">
+<meta property="og:title" content="SVG to PNG — free, private SVG converter">
+<meta property="og:description" content="Turn SVGs into crisp PNGs at any size. Runs 100% in your browser.">
+<meta property="og:image" content="screenshot.png">
+<link rel="icon" href="kit/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="kit/kit.css">
+<link rel="stylesheet" href="app.css">
+<script src="kit/kit.js"></script>
+</head>
+<body data-tool="svg-to-png">
+<main class="s3-main">
+  <section class="s3-hero">
+    <h1>SVG to PNG</h1>
+    <p>Render SVG files or pasted SVG code to sharp PNG images at any size. Transparent or with a background, one file or a batch. SVGs are drawn as plain images, so any scripts inside them never run.</p>
+  </section>
+
+  <div class="sv-grid">
+    <section class="card stack">
+      <label class="drop" id="drop">
+        <input type="file" accept=".svg,image/svg+xml" multiple hidden>
+        <svg class="i"><use href="#i-upload"/></svg>
+        <b>Drop SVG files here</b>
+        <span class="faint">or click to choose</span>
+      </label>
+      <label class="field">…or paste SVG code
+        <textarea class="textarea" id="code" spellcheck="false" placeholder='&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;…&lt;/svg&gt;'></textarea>
+      </label>
+      <button class="btn" id="addCode"><svg class="i"><use href="#i-plus"/></svg>Add this code</button>
+
+      <div class="field-g">
+        <span class="lbl" id="mode-l">Output size</span>
+        <div class="seg" id="mode" role="group" aria-labelledby="mode-l">
+          <button aria-pressed="true" data-v="scale">Scale</button>
+          <button aria-pressed="false" data-v="width">Width</button>
+          <button aria-pressed="false" data-v="height">Height</button>
+          <button aria-pressed="false" data-v="exact">Exact</button>
+        </div>
+      </div>
+      <div class="seg" id="scale" role="group" aria-label="Scale">
+        <button aria-pressed="false" data-v="1">1x</button><button aria-pressed="false" data-v="2">2x</button>
+        <button aria-pressed="false" data-v="3">3x</button><button aria-pressed="false" data-v="4">4x</button>
+        <button aria-pressed="false" data-v="8">8x</button>
+      </div>
+      <div class="row" id="dims">
+        <label class="field grow" id="wf">Width (px)<input class="input" type="number" id="w" min="1" max="16384" inputmode="numeric"></label>
+        <label class="field grow" id="hf">Height (px)<input class="input" type="number" id="h" min="1" max="16384" inputmode="numeric"></label>
+      </div>
+      <div class="row">
+        <label class="check"><input type="checkbox" id="transparent" checked> Transparent background</label>
+        <input type="color" id="bg" value="#ffffff" aria-label="Background color">
+      </div>
+    </section>
+
+    <section class="card stack">
+      <div class="row between">
+        <h2>PNG <small id="count"></small></h2>
+        <div class="row">
+          <button class="btn small" id="one" disabled><svg class="i"><use href="#i-download"/></svg>This PNG</button>
+          <button class="btn primary small" id="zip" disabled><svg class="i"><use href="#i-download"/></svg>Download all (.zip)</button>
+        </div>
+      </div>
+      <div class="empty" id="empty"><b>No SVG yet</b>Drop .svg files or paste SVG code on the left.</div>
+      <div class="sv-stage checker" id="stage" hidden><img id="preview" alt="PNG preview"></div>
+      <div class="row" id="info" hidden><span class="chip accent" id="dimChip"></span><span class="chip" id="sizeChip"></span><span class="chip" id="srcChip"></span></div>
+      <ul class="sv-list" id="list"></ul>
+    </section>
+  </div>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
